@@ -2,27 +2,9 @@
 <html>
 <head>
 	<title>YAHOO Finance Ticker - API - AJAX - INTRO</title>
-	<style type="text/css" media="screen">
-		#header{
-			width: 100%;
-			text-align: center;
-			font-size: 20px;
-		}
-		#stock-details{
-			width: 80%;
-			margin: auto;
-			padding: 15px;
-		}
-		table{
-			width: 100%;
-		}
-		td, th{
-			text-transform: uppercase;
-			text-align: center;
-			padding: 10px;
-		}
-
-	</style>
+	<link rel="stylesheet" type="text/css" href="footables/css/footable.core.css">
+	<link rel="stylesheet" type="text/css" href="footables/css/footable.standalone.css">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 
 </head>
@@ -41,14 +23,16 @@
 	</div>
 
 	<div id="stock-details">
-		<table border="1">
+
+			<input type="text" id="filter">
+		<table border="1" class="footable table" data-filter=#filter data-page-size="3" >
 			<thead>
 				<tr>
 					<th>Stock Symbol</th>
 					<th>Company Name</th>
-					<th>Last Trade</th>
-					<th>Daily Chance</th>
-					<th>Day High</th>
+					<th data-type="numeric" data-sort-initial="true">Last Trade</th>
+					<th data-hide="phone">Daily Chance</th>
+					<th data-hide="phone">Day High</th>
 				</tr>
 			</thead>
 			<tbody id="ticker-body">
@@ -60,10 +44,21 @@
 					<td></td>
 				</tr>
 			</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="5">
+							<div class="pagination pagination-centered hide-if-no-paging"></div>
+						</td>
+					</tr>
+				</tfoot>
 		</table>
 	</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script type="text/javascript" src="footables/js/footable.js"></script>
+<script type="text/javascript" src="footables/js/footable.sort.js"></script>
+<script type="text/javascript" src="footables/js/footable.filter.js"></script>
+<script type="text/javascript" src="footables/js/footable.paginate.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>
