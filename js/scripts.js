@@ -20,6 +20,7 @@
 					$(function () {
 						$('.footable').footable();
 					});
+					addSpecialClasses();
 				});
 			event.preventDefault();
 		});
@@ -27,10 +28,21 @@
 				var newHTML = "<tr><td>" + thingToLoopThrough.Symbol + "</td>";
 				newHTML += "<td>" + thingToLoopThrough.Name + "</td>";
 				newHTML += "<td>" + thingToLoopThrough.LastTradePriceOnly + "</td>";
-				newHTML += "<td>" + thingToLoopThrough.Change + "</td>";
+				newHTML += "<td class='daily-change'>" + thingToLoopThrough.Change + "</td>";
 				newHTML += "<td>" + thingToLoopThrough.DaysHigh + "</td></tr>";
 				return newHTML;
 			}
+		function addSpecialClasses(){
+			$(".daily-change").each(function(){
+				var changeValue = $(this).html();
+				if(changeValue.indexOf("+") > -1){
+					$(this).addClass("green");
+				}else if(changeValue.indexOf("-") > -1){
+					$(this).addClass("red");
+				}
+
+			});
+		}
 	});
 
 
